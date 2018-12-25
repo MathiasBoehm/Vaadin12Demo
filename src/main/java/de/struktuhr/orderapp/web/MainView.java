@@ -22,15 +22,17 @@ public class MainView extends VerticalLayout {
         Button navCustomersButton = new Button("Customers");
         navCustomersButton.addClickListener(click -> UI.getCurrent().navigate("customers"));
 
+        Button navButton = new Button("Demo View");
+        navButton.addClickListener(click -> UI.getCurrent().navigate(DemoView.class));
 
-        Button navButton = new Button("Demo");
-        navButton.addClickListener(click -> UI.getCurrent().navigate("demo"));
-
-        Button navButton2 = new Button("Demo With Param");
+        Button navButton2 = new Button("Demo View With Param");
         navButton2.addClickListener(click -> UI.getCurrent().navigate(DemoView.class, "33"));
 
+        Button navButton3 = new Button("Show Beans");
+        navButton3.addClickListener(click -> UI.getCurrent().navigate(ShowBeansView.class));
+
         // Build layout
-        HorizontalLayout actions = new HorizontalLayout(navCustomersButton, navButton, navButton2);
+        HorizontalLayout actions = new HorizontalLayout(navCustomersButton, navButton, navButton2, navButton3);
         add(actions);
 
     }

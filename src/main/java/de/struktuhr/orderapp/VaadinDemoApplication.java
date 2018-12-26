@@ -17,12 +17,12 @@ import java.time.Month;
 
 @EnableAsync
 @SpringBootApplication
-public class OrderAppApplication {
+public class VaadinDemoApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(OrderAppApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(VaadinDemoApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrderAppApplication.class, args);
+		SpringApplication.run(VaadinDemoApplication.class, args);
 	}
 
 	@Bean

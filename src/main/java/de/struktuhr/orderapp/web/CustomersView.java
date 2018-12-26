@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
-@Route("customers")
+@Route(value = "customers", layout = MainAppLayout.class)
 public class CustomersView extends VerticalLayout {
 
     private final static Logger log = LoggerFactory.getLogger(CustomersView.class);

@@ -6,7 +6,7 @@ import com.vaadin.flow.router.Route;
 import de.struktuhr.orderapp.beans.SessionBean;
 import de.struktuhr.orderapp.beans.UIBean;
 
-@Route("show-beans-view")
+@Route(value = "show-beans-view", layout = MainAppLayout.class)
 public class ShowBeansView extends VerticalLayout {
 
     private final UIBean uiBean;

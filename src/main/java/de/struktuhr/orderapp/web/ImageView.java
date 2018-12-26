@@ -9,7 +9,7 @@ import de.struktuhr.orderapp.repo.CustomerRepository;
 
 import java.util.UUID;
 
-@Route("images")
+@Route(value = "image", layout = MainAppLayout.class)
 public class ImageView extends VerticalLayout {
 
     public ImageView(CustomerRepository customerRepository) {

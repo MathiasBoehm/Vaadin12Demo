@@ -36,6 +36,7 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
     DatePicker birthday = new DatePicker("Birthday");
     ComboBox<String> salutation = new ComboBox<>("Salutation", "Mr.", "Mrs.", "Ms.");
     TextField salary = new TextField("Salary");
+    TextField imageUrl = new TextField("Image URL");
 
     // Actions
     Button save = new Button("Save", VaadinIcon.CHECK.create());
@@ -51,7 +52,9 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
     public CustomerEditor(CustomerRepository repo) {
         this.repo = repo;
 
-        add(firstName, lastName, manager, birthday, salutation, salary, actions);
+        imageUrl.setWidth("30em");
+
+        add(firstName, lastName, manager, birthday, salutation, salary, imageUrl, actions);
 
         // bind using naming conventions
         binder.forField(firstName)
@@ -71,6 +74,8 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         binder.forField(salary)
                 .withConverter(new StringToBigDecimalConverter("Keine Umwandlung in Big Decimal möglich"))
                 .bind(Customer::getSalary, Customer::setSalary);
+
+        binder.forField(imageUrl).bind(Customer::getImageUrl, Customer::setImageUrl);
 
         // configure and sytle components
         setSpacing(true);

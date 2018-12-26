@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Entity
 public class Customer {
 
+    private final static String DEFAULT_IMAGE_URL = "https://randomuser.me/api/portraits/women/60.jpg";
+
     @Id
     @GeneratedValue
     private Long id;
@@ -25,16 +27,23 @@ public class Customer {
 
     private BigDecimal salary;
 
+    private String imageUrl;
+
     protected Customer() {
     }
 
-    public Customer(String firstName, String lastName, boolean manager, LocalDate birthday, String salutation, BigDecimal salary) {
+    public Customer(String firstName, String lastName, boolean manager, LocalDate birthday, String salutation, BigDecimal salary, String imageUrl) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.manager = manager;
         this.birthday = birthday;
         this.salutation = salutation;
         this.salary = salary;
+        this.imageUrl = imageUrl;
+    }
+
+    public Customer(String firstName, String lastName, boolean manager, LocalDate birthday, String salutation, BigDecimal salary) {
+        this(firstName, lastName, manager, birthday, salutation, salary, DEFAULT_IMAGE_URL);
     }
 
     public Long getId() {
@@ -91,5 +100,13 @@ public class Customer {
 
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

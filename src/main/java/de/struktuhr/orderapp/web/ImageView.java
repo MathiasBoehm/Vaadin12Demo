@@ -12,7 +12,6 @@ import java.util.UUID;
 @Route("images")
 public class ImageView extends VerticalLayout {
 
-
     public ImageView(CustomerRepository customerRepository) {
         // Add Grid with Images
         Grid<Customer> grid = new Grid<>();
@@ -22,8 +21,9 @@ public class ImageView extends VerticalLayout {
         grid.addColumn(Customer::getFirstName).setHeader("First Name");
         grid.addColumn(Customer::getLastName).setHeader("Last Name");
         grid.addComponentColumn((customer) -> {
-            Image image = new Image("http://loremflickr.com/120/80?random=" + UUID.randomUUID().toString(), "Alt Text");
-            image.setHeight("80px");
+            Image image = new Image(customer.getImageUrl(), "Alt Text");
+            image.setHeight("64px");
+            image.setWidth("64px");
             image.setTitle(customer.getFirstName());
             return image;
         }).setHeader("Image");

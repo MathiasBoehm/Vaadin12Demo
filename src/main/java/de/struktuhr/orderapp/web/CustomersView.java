@@ -5,6 +5,7 @@ import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -49,7 +50,7 @@ public class CustomersView extends VerticalLayout {
         this.addNewBtn = new Button("New Customer", VaadinIcon.PLUS.create());
 
 
-        Button calcButton = new Button("Start Calculation");
+        Button calcButton = new Button("Start Calculation", VaadinIcon.CALC.create());
         calcButton.addClickListener(click -> calculationService.runCalculation(UUID.randomUUID().toString()));
 
         infoLabel = new Label();
@@ -60,6 +61,13 @@ public class CustomersView extends VerticalLayout {
 
         grid.setHeightByRows(true);
         grid.setColumns("id", "firstName", "lastName", "manager", "birthday", "salutation", "salary");
+        grid.addComponentColumn((customer) -> {
+            Image image = new Image(customer.getImageUrl(), "Alt Text");
+            image.setHeight("64px");
+            image.setWidth("64px");
+            image.setTitle(customer.getFirstName());
+            return image;
+        }).setHeader("Image");
         grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
 
         filter.setPlaceholder("Filter by last name");

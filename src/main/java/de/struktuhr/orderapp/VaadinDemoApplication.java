@@ -29,11 +29,25 @@ public class VaadinDemoApplication {
 	public CommandLineRunner loadData(CustomerRepository repository) {
 		return (args) -> {
 			// save a couple of customers
-			repository.save(new Customer("Jack", "Bauer", false, LocalDate.of(1980, Month.APRIL, 3), "Mr.", BigDecimal.valueOf(5_100.00)));
-			repository.save(new Customer("Chloe", "O'Brian", true, LocalDate.of(1970, Month.JUNE, 10), "Ms.", BigDecimal.valueOf(3_250.80)));
-			repository.save(new Customer("Kim", "Bauer", false, LocalDate.of(1995, Month.APRIL, 13), "Mrs.", BigDecimal.valueOf(6_100.00)));
-			repository.save(new Customer("David", "Palmer", true, LocalDate.of(1960, Month.APRIL, 24), "Mr.", BigDecimal.valueOf(7_100.00)));
-			repository.save(new Customer("Michelle", "Dessler", false, LocalDate.of(1974, Month.APRIL, 6), "Ms.", BigDecimal.valueOf(1_100.43)));
+			repository.save(new Customer("Jack", "Bauer", false,
+					LocalDate.of(1980, Month.APRIL, 3), "Mr.", BigDecimal.valueOf(5_100.00),
+					"https://randomuser.me/api/portraits/men/10.jpg"));
+
+			repository.save(new Customer("Chloe", "O'Brian", true,
+					LocalDate.of(1970, Month.JUNE, 10), "Ms.", BigDecimal.valueOf(3_250.80),
+					"https://randomuser.me/api/portraits/women/24.jpg"));
+
+			repository.save(new Customer("Kim", "Bauer", false,
+					LocalDate.of(1995, Month.APRIL, 13), "Mrs.", BigDecimal.valueOf(6_100.00),
+					"https://randomuser.me/api/portraits/women/88.jpg"));
+
+			repository.save(new Customer("David", "Palmer", true,
+					LocalDate.of(1960, Month.APRIL, 24), "Mr.", BigDecimal.valueOf(7_100.00),
+					"https://randomuser.me/api/portraits/men/88.jpg"));
+
+			repository.save(new Customer("Michelle", "Dessler", false,
+					LocalDate.of(1974, Month.APRIL, 6), "Ms.", BigDecimal.valueOf(1_100.43),
+					"https://randomuser.me/api/portraits/women/69.jpg"));
 
 			// fetch all customers
 			log.info("Customers found with findAll():");

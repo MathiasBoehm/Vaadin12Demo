@@ -31,8 +31,12 @@ public class MainView extends VerticalLayout {
         Button navButton3 = new Button("Show Beans");
         navButton3.addClickListener(click -> UI.getCurrent().navigate(ShowBeansView.class));
 
+        Button navButton4 = new Button("Show Image");
+        navButton4.addClickListener(click -> UI.getCurrent().navigate(ImageView.class));
+
         // Build layout
-        HorizontalLayout actions = new HorizontalLayout(navCustomersButton, navButton, navButton2, navButton3);
+        HorizontalLayout actions = new HorizontalLayout(navCustomersButton, navButton,
+                navButton2, navButton3, navButton4);
         add(actions);
 
     }

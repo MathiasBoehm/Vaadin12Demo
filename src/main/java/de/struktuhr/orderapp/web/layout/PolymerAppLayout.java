@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.orderapp.web.layout;
 
 import com.github.appreciated.app.layout.behaviour.AppLayout;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
@@ -15,47 +15,67 @@ import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.page.Viewport;
+import de.struktuhr.orderapp.web.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.github.appreciated.app.layout.entity.Section.HEADER;
 
 //@Theme(Material.class) // Material Design seems to clash with App Layout
 @Push
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-public class MainAppLayout extends AppLayoutRouterLayout {
-    private Behaviour variant;
+public class PolymerAppLayout extends AppLayoutRouterLayout {
+
+    private final String VERSION = "1.0.0";
+
+    private final static Logger log = LoggerFactory.getLogger(PolymerAppLayout.class);
+
     private DefaultNotificationHolder notifications;
+
     private DefaultBadgeHolder badge;
 
 
     @Override
     public AppLayout createAppLayoutInstance() {
 
-        notifications = new DefaultNotificationHolder(newStatus -> {});
+        log.info("createAppLayoutInstance locale = {}", getLocale());
+
+        notifications = new DefaultNotificationHolder(newStatus -> {
+        });
         badge = new DefaultBadgeHolder();
 
         return AppLayoutBuilder
                 .get(Behaviour.LEFT_HYBRID)
-                .withTitle("Vaadin 12 Demo Application")
+                .withTitle(getTranslation("app.title"))
                 .withAppBar(AppBarBuilder
                         .get()
                         .add(new AppBarNotificationButton(VaadinIcon.BELL, notifications))
                         .build())
                 .withAppMenu(LeftAppMenuBuilder
                         .get()
-                        .addToSection(new MenuHeaderComponent("Section Header",
-                                "Version 1.0.0",
-                                null
+                        .addToSection(new MenuHeaderComponent(getTranslation("nav.header.title"),
+                                getTranslation("nav.header.version", getVersion()),
+                                "/frontend/images/logo.png"
                         ), HEADER)
-                        .add(new LeftNavigationComponent("Home", VaadinIcon.HOME.create(), MainView.class))
-                        .add(new LeftNavigationComponent("Customers", VaadinIcon.TABLE.create(), CustomersView.class))
+                        .add(new LeftNavigationComponent(getTranslation("nav.home"), VaadinIcon.HOME.create(), MainView.class))
+                        .add(new LeftNavigationComponent(getTranslation("nav.customers"), VaadinIcon.TABLE.create(), CustomersView.class))
                         .add(LeftSubMenuBuilder
-                                .get("My Submenu", VaadinIcon.PLUS.create())
-                                .add(new LeftNavigationComponent("Demo View", VaadinIcon.CHECK.create(), DemoView.class))
-                                .add(new LeftNavigationComponent("Image View", VaadinIcon.FILE_PICTURE.create(), ImageView.class))
+                                .get(getTranslation("nav.submenu.1"), VaadinIcon.BOAT.create())
+                                .add(new LeftNavigationComponent(getTranslation("nav.demo"), VaadinIcon.DESKTOP.create(), DemoView.class))
+                                .add(new LeftNavigationComponent(getTranslation("nav.images"), VaadinIcon.PICTURE.create(), ImageView.class))
+                                .build())
+                        .add(LeftSubMenuBuilder
+                                .get(getTranslation("nav.submenu.2"), VaadinIcon.BUSS.create())
+                                .add(new LeftNavigationComponent(getTranslation("nav.beans"), VaadinIcon.GLOBE.create(), ShowBeansView.class))
                                 .build())
                         .build())
                 .build();
 
+    }
+
+
+    private String getVersion() {
+        return VERSION;
     }
 
 }

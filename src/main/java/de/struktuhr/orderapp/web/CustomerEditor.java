@@ -1,6 +1,7 @@
 package de.struktuhr.orderapp.web;
 
 import com.vaadin.flow.component.KeyNotifier;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -20,31 +21,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import de.struktuhr.orderapp.entity.Customer;
 import de.struktuhr.orderapp.repo.CustomerRepository;
 
+import java.time.LocalDate;
+
 @SpringComponent
 @UIScope
 public class CustomerEditor extends VerticalLayout implements KeyNotifier {
     
     private final CustomerRepository repo;
 
-
     private Customer customer;
 
-    // Fields to edit
-    TextField firstName = new TextField("First name");
-    TextField lastName = new TextField("Last name");
-    Checkbox manager = new Checkbox("Manager");
-    DatePicker birthday = new DatePicker("Birthday");
-    ComboBox<String> salutation = new ComboBox<>("Salutation", "Mr.", "Mrs.", "Ms.");
-    TextField salary = new TextField("Salary");
-    TextField imageUrl = new TextField("Image URL");
-
-    // Actions
-    Button save = new Button("Save", VaadinIcon.CHECK.create());
-    Button cancel = new Button("Cancel", VaadinIcon.UNLOCK.create());
-    Button delete = new Button("Delete", VaadinIcon.TRASH.create());
-    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
-
-    Binder<Customer> binder = new Binder<>(Customer.class);
+    private Binder<Customer> binder;
 
     private ChangeHandler changeHandler;
 
@@ -52,7 +39,25 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
     public CustomerEditor(CustomerRepository repo) {
         this.repo = repo;
 
+        // Fields to edit
+        TextField firstName = new TextField("First name");
+        TextField lastName = new TextField("Last name");
+        Checkbox manager = new Checkbox("Manager");
+        DatePicker birthday = new DatePicker("Birthday");
+
+        ComboBox<String> salutation = new ComboBox<>("Salutation", "Mr.", "Mrs.", "Ms.");
+        TextField salary = new TextField("Salary");
+        TextField imageUrl = new TextField("Image URL");
         imageUrl.setWidth("30em");
+
+        // Actions
+        Button save = new Button("Save", VaadinIcon.CHECK.create());
+        Button cancel = new Button("Cancel", VaadinIcon.UNLOCK.create());
+        Button delete = new Button("Delete", VaadinIcon.TRASH.create());
+        HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+
+        binder = new Binder<>(Customer.class);
+
 
         add(firstName, lastName, manager, birthday, salutation, salary, imageUrl, actions);
 
@@ -80,18 +85,13 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         // configure and sytle components
         setSpacing(true);
 
-        //this.setResponsiveSteps(
-        //        new ResponsiveStep("0", 1),
-        //        new ResponsiveStep("21em", 2),
-        //        new ResponsiveStep("22em", 3));
-
         save.getElement().getThemeList().add("primary");
         delete.getElement().getThemeList().add("error");
 
         // wire actions
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> editCustomer(customer));
+        cancel.addClickListener(e -> cancel());
         setVisible(false);
     }
 
@@ -115,6 +115,11 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         }
     }
 
+    void cancel() {
+        customer = null;
+        setVisible(false);
+    }
+
     public final void editCustomer(Customer c) {
         if (c == null) {
             setVisible(false);
@@ -127,13 +132,10 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         else {
             customer = c;
         }
-        cancel.setVisible(persistent);
 
         binder.readBean(customer);
 
         setVisible(true);
-
-        firstName.focus();
 
     }
 

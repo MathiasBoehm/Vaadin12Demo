@@ -42,7 +42,7 @@ public class VaadinDemoApplication {
 					"https://randomuser.me/api/portraits/women/88.jpg"));
 
 			repository.save(new Customer("David", "Palmer", true,
-					LocalDate.of(1960, Month.APRIL, 24), "Mr.", BigDecimal.valueOf(7_100.00),
+					LocalDate.of(1960, Month.APRIL, 24), "Mr.", BigDecimal.valueOf(17_100.00),
 					"https://randomuser.me/api/portraits/men/88.jpg"));
 
 			repository.save(new Customer("Michelle", "Dessler", false,

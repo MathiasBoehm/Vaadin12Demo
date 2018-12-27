@@ -4,6 +4,7 @@ import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
@@ -13,9 +14,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
+import de.struktuhr.orderapp.ViewUtils;
 import de.struktuhr.orderapp.control.CalculationService;
 import de.struktuhr.orderapp.entity.Customer;
 import de.struktuhr.orderapp.repo.CustomerRepository;
+import de.struktuhr.orderapp.web.layout.PolymerAppLayout;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +26,11 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-@Route(value = "customers", layout = MainAppLayout.class)
+@Route(value = "customers", layout = PolymerAppLayout.class)
 public class CustomersView extends VerticalLayout {
 
     private final static Logger log = LoggerFactory.getLogger(CustomersView.class);
@@ -45,7 +49,7 @@ public class CustomersView extends VerticalLayout {
         this.repo = repo;
         this.editor = editor;
         this.calculationService = calculationService;
-        this.grid = new Grid<>(Customer.class);
+        this.grid = new Grid<>();
         this.filter = new TextField();
         this.addNewBtn = new Button("New Customer", VaadinIcon.PLUS.create());
 
@@ -59,24 +63,39 @@ public class CustomersView extends VerticalLayout {
         HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, calcButton);
         add(actions, grid, editor, infoLabel);
 
-        grid.setHeightByRows(true);
-        grid.setColumns("id", "firstName", "lastName", "manager", "birthday", "salutation", "salary");
+        // Initialize Customers List
+        listCustomers(null);
+
+        // Columns
+        grid.addColumn(Customer::getId).setHeader("ID").setWidth("50px").setFlexGrow(0);
+        grid.addColumn(Customer::getFirstName).setHeader("First Name").setSortable(true);
+        grid.addColumn(Customer::getLastName).setHeader("Last Name").setSortable(true);
+
+        Grid.Column<Customer> birthday_calc = grid.addColumn((customer) -> ViewUtils.formatDate(customer.getBirthday())).setHeader("Birthday").setSortable(true);
+        birthday_calc.setComparator(Comparator.comparing(Customer::getBirthday));
+        birthday_calc.setTextAlign(ColumnTextAlign.START);
+
+        Grid.Column<Customer> salary_calc = grid.addColumn((customer) -> ViewUtils.formatCurrency(customer.getSalary())).setHeader("Salary").setSortable(true);
+        salary_calc.setComparator(Comparator.comparing(Customer::getSalary));
+        salary_calc.setTextAlign(ColumnTextAlign.END);
+
         grid.addComponentColumn((customer) -> {
             Image image = new Image(customer.getImageUrl(), "Alt Text");
             image.setHeight("64px");
             image.setWidth("64px");
             image.setTitle(customer.getFirstName());
             return image;
-        }).setHeader("Image");
-        grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+        }).setHeader("Image").setTextAlign(ColumnTextAlign.CENTER);
 
-        filter.setPlaceholder("Filter by last name");
+        grid.setHeightByRows(true);
+        grid.asSingleSelect().addValueChangeListener(e -> editor.editCustomer(e.getValue()));
+
 
         // Hook logic
+        filter.setPlaceholder("Filter by last name");
         filter.setValueChangeMode(ValueChangeMode.EAGER);
         filter.addValueChangeListener(e -> listCustomers(e.getValue()));
 
-        grid.asSingleSelect().addValueChangeListener(e -> editor.editCustomer(e.getValue()));
 
         addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", "", false, LocalDate.now(), "Mr.", BigDecimal.ZERO)));
 
@@ -84,9 +103,6 @@ public class CustomersView extends VerticalLayout {
             editor.setVisible(false);
             listCustomers(filter.getValue());
         });
-
-        // Initialize listing
-        listCustomers(null);
     }
 
     private static class LookupThread extends Thread {

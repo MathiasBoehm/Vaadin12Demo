@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.web.layout;
+package de.struktuhr.demoapp.web.layout;
 
 import com.vaadin.flow.component.applayout.AbstractAppRouterLayout;
 import com.vaadin.flow.component.applayout.AppLayout;

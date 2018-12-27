@@ -1,14 +1,14 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.demoapp.web;
 
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import de.struktuhr.orderapp.ViewUtils;
-import de.struktuhr.orderapp.entity.Customer;
-import de.struktuhr.orderapp.repo.CustomerRepository;
-import de.struktuhr.orderapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.ViewUtils;
+import de.struktuhr.demoapp.entity.Customer;
+import de.struktuhr.demoapp.repo.CustomerRepository;
+import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
 
 import java.util.Comparator;
 import java.util.UUID;

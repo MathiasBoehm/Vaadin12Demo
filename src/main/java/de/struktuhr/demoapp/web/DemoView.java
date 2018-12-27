@@ -1,9 +1,9 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.demoapp.web;
 
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.*;
-import de.struktuhr.orderapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

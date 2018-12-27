@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.config;
+package de.struktuhr.demoapp.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

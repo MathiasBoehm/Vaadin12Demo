@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.web.layout;
+package de.struktuhr.demoapp.web.layout;
 
 import com.github.appreciated.app.layout.behaviour.AppLayout;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
@@ -15,7 +15,7 @@ import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.page.Viewport;
-import de.struktuhr.orderapp.web.*;
+import de.struktuhr.demoapp.web.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

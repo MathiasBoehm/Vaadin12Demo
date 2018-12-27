@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.entity;
+package de.struktuhr.demoapp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

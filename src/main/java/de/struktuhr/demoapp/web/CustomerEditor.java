@@ -1,7 +1,6 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.demoapp.web;
 
 import com.vaadin.flow.component.KeyNotifier;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -16,13 +15,11 @@ import com.vaadin.flow.data.converter.StringToBigDecimalConverter;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 
-import de.struktuhr.orderapp.DatePickerUtils;
+import de.struktuhr.demoapp.DatePickerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import de.struktuhr.orderapp.entity.Customer;
-import de.struktuhr.orderapp.repo.CustomerRepository;
-
-import java.time.LocalDate;
+import de.struktuhr.demoapp.entity.Customer;
+import de.struktuhr.demoapp.repo.CustomerRepository;
 
 @SpringComponent
 @UIScope

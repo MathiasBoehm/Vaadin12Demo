@@ -1,11 +1,11 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.demoapp.web;
 
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import de.struktuhr.orderapp.beans.SessionBean;
-import de.struktuhr.orderapp.beans.UIBean;
-import de.struktuhr.orderapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.beans.SessionBean;
+import de.struktuhr.demoapp.beans.UIBean;
+import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
 
 @Route(value = "beans", layout = PolymerAppLayout.class)
 public class ShowBeansView extends VerticalLayout {

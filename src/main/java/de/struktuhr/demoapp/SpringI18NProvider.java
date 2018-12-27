@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp;
+package de.struktuhr.demoapp;
 
 import com.vaadin.flow.i18n.I18NProvider;
 import org.springframework.context.support.MessageSourceAccessor;

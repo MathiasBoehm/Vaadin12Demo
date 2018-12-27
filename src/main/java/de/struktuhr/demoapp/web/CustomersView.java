@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.web;
+package de.struktuhr.demoapp.web;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.DetachEvent;
@@ -14,11 +14,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
-import de.struktuhr.orderapp.ViewUtils;
-import de.struktuhr.orderapp.control.CalculationService;
-import de.struktuhr.orderapp.entity.Customer;
-import de.struktuhr.orderapp.repo.CustomerRepository;
-import de.struktuhr.orderapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.ViewUtils;
+import de.struktuhr.demoapp.control.CalculationService;
+import de.struktuhr.demoapp.entity.Customer;
+import de.struktuhr.demoapp.repo.CustomerRepository;
+import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

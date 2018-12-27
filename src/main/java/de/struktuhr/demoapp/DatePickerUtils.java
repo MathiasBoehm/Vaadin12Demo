@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp;
+package de.struktuhr.demoapp;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.datepicker.DatePicker;

@@ -1,19 +1,18 @@
-package de.struktuhr.orderapp.beans;
+package de.struktuhr.demoapp.beans;
 
-
-import com.vaadin.flow.spring.annotation.VaadinSessionScope;
+import com.vaadin.flow.spring.annotation.UIScope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 
 @Component
-@VaadinSessionScope
-public class SessionBean {
+@UIScope
+public class UIBean {
 
     private final String created;
     private String message;
 
-    public SessionBean() {
+    public UIBean() {
         created = "Created at " + LocalTime.now();
         message = "Message from " + LocalTime.now();
     }

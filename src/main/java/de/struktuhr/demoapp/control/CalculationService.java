@@ -1,4 +1,4 @@
-package de.struktuhr.orderapp.control;
+package de.struktuhr.demoapp.control;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

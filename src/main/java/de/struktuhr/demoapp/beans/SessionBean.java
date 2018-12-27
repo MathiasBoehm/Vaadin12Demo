@@ -1,12 +1,12 @@
 package de.struktuhr.demoapp.beans;
 
 
+import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.VaadinSessionScope;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 
-@Component
+@SpringComponent
 @VaadinSessionScope
 public class SessionBean {
 

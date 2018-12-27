@@ -1,11 +1,11 @@
 package de.struktuhr.demoapp.beans;
 
+import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 
-@Component
+@SpringComponent
 @UIScope
 public class UIBean {
 

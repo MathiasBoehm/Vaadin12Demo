@@ -16,6 +16,7 @@ import com.vaadin.flow.data.converter.StringToBigDecimalConverter;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 
+import de.struktuhr.orderapp.DatePickerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.struktuhr.orderapp.entity.Customer;
@@ -44,6 +45,7 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
         TextField lastName = new TextField("Last name");
         Checkbox manager = new Checkbox("Manager");
         DatePicker birthday = new DatePicker("Birthday");
+        DatePickerUtils.prepareI18N(birthday);
 
         ComboBox<String> salutation = new ComboBox<>("Salutation", "Mr.", "Mrs.", "Ms.");
         TextField salary = new TextField("Salary");

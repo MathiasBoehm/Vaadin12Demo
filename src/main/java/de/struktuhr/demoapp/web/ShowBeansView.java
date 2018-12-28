@@ -5,9 +5,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import de.struktuhr.demoapp.beans.SessionBean;
 import de.struktuhr.demoapp.beans.UIBean;
-import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
 
-@Route(value = "beans", layout = PolymerAppLayout.class)
+@Route(value = "beans", layout = VaadinAppLayout.class)
 public class ShowBeansView extends VerticalLayout {
 
     private final UIBean uiBean;

@@ -5,6 +5,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -57,8 +58,15 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
 
         binder = new Binder<>(Customer.class);
 
+        FormLayout form = new FormLayout();
+        form.add(firstName, lastName, manager, birthday, salutation, salary, imageUrl);
 
-        add(firstName, lastName, manager, birthday, salutation, salary, imageUrl, actions);
+        form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1),
+                new FormLayout.ResponsiveStep("21em", 2),
+                new FormLayout.ResponsiveStep("22em", 3));
+
+
+        add(form, actions);
 
         // bind using naming conventions
         binder.forField(firstName)

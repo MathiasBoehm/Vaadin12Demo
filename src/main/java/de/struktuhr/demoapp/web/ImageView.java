@@ -8,12 +8,12 @@ import com.vaadin.flow.router.Route;
 import de.struktuhr.demoapp.ViewUtils;
 import de.struktuhr.demoapp.entity.Customer;
 import de.struktuhr.demoapp.repo.CustomerRepository;
-import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
 
 import java.util.Comparator;
 import java.util.UUID;
 
-@Route(value = "images", layout = PolymerAppLayout.class)
+@Route(value = "images", layout = VaadinAppLayout.class)
 public class ImageView extends VerticalLayout {
 
     public ImageView(CustomerRepository customerRepository) {

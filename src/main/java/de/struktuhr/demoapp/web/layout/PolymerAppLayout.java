@@ -60,12 +60,12 @@ public class PolymerAppLayout extends AppLayoutRouterLayout {
                         .add(new LeftNavigationComponent(getTranslation("nav.home"), VaadinIcon.HOME.create(), MainView.class))
                         .add(new LeftNavigationComponent(getTranslation("nav.customers"), VaadinIcon.TABLE.create(), CustomersView.class))
                         .add(LeftSubMenuBuilder
-                                .get(getTranslation("nav.submenu.1"), VaadinIcon.BOAT.create())
+                                .get(getTranslation("nav.submenu.1"), VaadinIcon.PLUS.create())
                                 .add(new LeftNavigationComponent(getTranslation("nav.demo"), VaadinIcon.DESKTOP.create(), DemoView.class))
                                 .add(new LeftNavigationComponent(getTranslation("nav.images"), VaadinIcon.PICTURE.create(), ImageView.class))
                                 .build())
                         .add(LeftSubMenuBuilder
-                                .get(getTranslation("nav.submenu.2"), VaadinIcon.BUSS.create())
+                                .get(getTranslation("nav.submenu.2"), VaadinIcon.PLUS.create())
                                 .add(new LeftNavigationComponent(getTranslation("nav.beans"), VaadinIcon.GLOBE.create(), ShowBeansView.class))
                                 .build())
                         .build())

@@ -8,6 +8,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,7 +19,7 @@ import de.struktuhr.demoapp.ViewUtils;
 import de.struktuhr.demoapp.control.CalculationService;
 import de.struktuhr.demoapp.entity.Customer;
 import de.struktuhr.demoapp.repo.CustomerRepository;
-import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-@Route(value = "customers", layout = PolymerAppLayout.class)
+@Route(value = "customers", layout = VaadinAppLayout.class)
 public class CustomersView extends VerticalLayout {
 
     private final static Logger log = LoggerFactory.getLogger(CustomersView.class);
@@ -79,11 +80,23 @@ public class CustomersView extends VerticalLayout {
         salary_calc.setComparator(Comparator.comparing(Customer::getSalary));
         salary_calc.setTextAlign(ColumnTextAlign.END);
 
+        Grid.Column<Customer> manager = grid.addComponentColumn(customer -> {
+                    if (customer.isManager()) {
+                        Icon icon = VaadinIcon.CHECK.create();
+                        icon.setSize("12px");
+                        return icon;
+                    } else {
+                        return new Label("");
+                    }
+                }).setHeader("Manager");
+        manager.setTextAlign(ColumnTextAlign.CENTER);
+
         grid.addComponentColumn((customer) -> {
             Image image = new Image(customer.getImageUrl(), "Alt Text");
             image.setHeight("64px");
             image.setWidth("64px");
             image.setTitle(customer.getFirstName());
+            image.getElement().getStyle().set("border-radius", "100%"); // round image
             return image;
         }).setHeader("Image").setTextAlign(ColumnTextAlign.CENTER);
 

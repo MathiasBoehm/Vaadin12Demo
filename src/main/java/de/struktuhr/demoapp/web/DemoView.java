@@ -3,11 +3,11 @@ package de.struktuhr.demoapp.web;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.*;
-import de.struktuhr.demoapp.web.layout.PolymerAppLayout;
+import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Route(value = "demo", layout = PolymerAppLayout.class)
+@Route(value = "demo", layout = VaadinAppLayout.class)
 public class DemoView extends VerticalLayout implements HasUrlParameter<String>, AfterNavigationObserver {
 
     private final static Logger log = LoggerFactory.getLogger(DemoView.class);

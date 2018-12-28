@@ -1,4 +1,4 @@
-package de.struktuhr.demoapp.web;
+package de.struktuhr.demoapp.ui.customers;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.DetachEvent;
@@ -15,11 +15,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import de.struktuhr.demoapp.ViewUtils;
 import de.struktuhr.demoapp.control.CalculationService;
 import de.struktuhr.demoapp.entity.Customer;
 import de.struktuhr.demoapp.repo.CustomerRepository;
-import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
+import de.struktuhr.demoapp.ui.MainAppLayout;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 
-@Route(value = "customers", layout = VaadinAppLayout.class)
+@Route(value = "customers", layout = MainAppLayout.class)
 public class CustomersView extends VerticalLayout {
 
     private final static Logger log = LoggerFactory.getLogger(CustomersView.class);

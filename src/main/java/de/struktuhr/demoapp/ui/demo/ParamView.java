@@ -1,23 +1,23 @@
-package de.struktuhr.demoapp.web;
+package de.struktuhr.demoapp.ui.demo;
 
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.*;
-import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
+import de.struktuhr.demoapp.ui.MainAppLayout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Route(value = "demo", layout = VaadinAppLayout.class)
-public class DemoView extends VerticalLayout implements HasUrlParameter<String>, AfterNavigationObserver {
+@Route(value = "param", layout = MainAppLayout.class)
+public class ParamView extends VerticalLayout implements HasUrlParameter<String>, AfterNavigationObserver {
 
-    private final static Logger log = LoggerFactory.getLogger(DemoView.class);
+    private final static Logger log = LoggerFactory.getLogger(ParamView.class);
 
     private String urlParameter;
 
     private Label urlParameterLabel;
 
-    public DemoView() {
-        log.info("DemoView Constructor");
+    public ParamView() {
+        log.info("ParamView Constructor");
 
         urlParameterLabel = new Label();
         Label label = new Label("Hello in Demo View");

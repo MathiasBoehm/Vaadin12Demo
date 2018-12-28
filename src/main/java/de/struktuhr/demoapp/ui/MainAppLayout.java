@@ -1,4 +1,4 @@
-package de.struktuhr.demoapp.web.layout;
+package de.struktuhr.demoapp.ui;
 
 import com.vaadin.flow.component.applayout.AbstractAppRouterLayout;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -11,7 +11,7 @@ import com.vaadin.flow.theme.material.Material;
 
 @Theme(value = Material.class, variant = "light")
 @Push
-public class VaadinAppLayout extends AbstractAppRouterLayout {
+public class MainAppLayout extends AbstractAppRouterLayout {
 
     @Override
     protected void configure(AppLayout appLayout, AppLayoutMenu appLayoutMenu) {
@@ -20,7 +20,7 @@ public class VaadinAppLayout extends AbstractAppRouterLayout {
         appLayoutMenu.addMenuItem(VaadinIcon.HOME.create(), "Home", "");
         appLayoutMenu.addMenuItem(VaadinIcon.TABLE.create(), "Customers", "customers");
 
-        appLayoutMenu.addMenuItem(VaadinIcon.DESKTOP.create(), "Demo", "demo");
+        appLayoutMenu.addMenuItem(VaadinIcon.DESKTOP.create(), "Param", "param");
         appLayoutMenu.addMenuItem(VaadinIcon.PICTURE.create(), "Images", "images");
         appLayoutMenu.addMenuItem(VaadinIcon.GLOBE.create(), "Beans", "beans");
     }

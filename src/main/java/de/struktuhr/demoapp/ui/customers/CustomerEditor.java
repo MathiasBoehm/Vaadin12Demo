@@ -1,4 +1,4 @@
-package de.struktuhr.demoapp.web;
+package de.struktuhr.demoapp.ui.customers;
 
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;

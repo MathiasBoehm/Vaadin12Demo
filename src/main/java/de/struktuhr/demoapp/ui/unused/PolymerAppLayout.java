@@ -1,4 +1,4 @@
-package de.struktuhr.demoapp.web.layout;
+package de.struktuhr.demoapp.ui.unused;
 
 import com.github.appreciated.app.layout.behaviour.AppLayout;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
@@ -15,7 +15,11 @@ import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.page.Viewport;
-import de.struktuhr.demoapp.web.*;
+import de.struktuhr.demoapp.ui.MainView;
+import de.struktuhr.demoapp.ui.customers.CustomersView;
+import de.struktuhr.demoapp.ui.demo.ParamView;
+import de.struktuhr.demoapp.ui.demo.ImageView;
+import de.struktuhr.demoapp.ui.demo.ShowBeansView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +65,7 @@ public class PolymerAppLayout extends AppLayoutRouterLayout {
                         .add(new LeftNavigationComponent(getTranslation("nav.customers"), VaadinIcon.TABLE.create(), CustomersView.class))
                         .add(LeftSubMenuBuilder
                                 .get(getTranslation("nav.submenu.1"), VaadinIcon.PLUS.create())
-                                .add(new LeftNavigationComponent(getTranslation("nav.demo"), VaadinIcon.DESKTOP.create(), DemoView.class))
+                                .add(new LeftNavigationComponent(getTranslation("nav.demo"), VaadinIcon.DESKTOP.create(), ParamView.class))
                                 .add(new LeftNavigationComponent(getTranslation("nav.images"), VaadinIcon.PICTURE.create(), ImageView.class))
                                 .build())
                         .add(LeftSubMenuBuilder

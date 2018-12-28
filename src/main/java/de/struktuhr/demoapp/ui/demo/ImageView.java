@@ -1,4 +1,4 @@
-package de.struktuhr.demoapp.web;
+package de.struktuhr.demoapp.ui.demo;
 
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
@@ -8,12 +8,12 @@ import com.vaadin.flow.router.Route;
 import de.struktuhr.demoapp.ViewUtils;
 import de.struktuhr.demoapp.entity.Customer;
 import de.struktuhr.demoapp.repo.CustomerRepository;
-import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
+import de.struktuhr.demoapp.ui.MainAppLayout;
 
 import java.util.Comparator;
 import java.util.UUID;
 
-@Route(value = "images", layout = VaadinAppLayout.class)
+@Route(value = "images", layout = MainAppLayout.class)
 public class ImageView extends VerticalLayout {
 
     public ImageView(CustomerRepository customerRepository) {

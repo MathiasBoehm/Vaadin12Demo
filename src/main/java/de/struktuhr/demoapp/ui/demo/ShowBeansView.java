@@ -1,13 +1,13 @@
-package de.struktuhr.demoapp.web;
+package de.struktuhr.demoapp.ui.demo;
 
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import de.struktuhr.demoapp.beans.SessionBean;
 import de.struktuhr.demoapp.beans.UIBean;
-import de.struktuhr.demoapp.web.layout.VaadinAppLayout;
+import de.struktuhr.demoapp.ui.MainAppLayout;
 
-@Route(value = "beans", layout = VaadinAppLayout.class)
+@Route(value = "beans", layout = MainAppLayout.class)
 public class ShowBeansView extends VerticalLayout {
 
     private final UIBean uiBean;

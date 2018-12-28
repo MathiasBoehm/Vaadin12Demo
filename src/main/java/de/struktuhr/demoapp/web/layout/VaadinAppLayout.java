@@ -9,7 +9,7 @@ import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
 
-@Theme(Material.class)
+@Theme(value = Material.class, variant = "light")
 @Push
 public class VaadinAppLayout extends AbstractAppRouterLayout {
 

@@ -15,7 +15,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteAlias;
 import de.struktuhr.demoapp.ViewUtils;
 import de.struktuhr.demoapp.control.CalculationService;
 import de.struktuhr.demoapp.entity.Customer;

@@ -4,11 +4,12 @@ package de.struktuhr.demoapp.beans;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @SpringComponent
 @VaadinSessionScope
-public class SessionBean {
+public class SessionBean implements Serializable {
 
     private final String created;
     private String message;

@@ -3,11 +3,12 @@ package de.struktuhr.demoapp.beans;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @SpringComponent
 @UIScope
-public class UIBean {
+public class UIBean implements Serializable {
 
     private final String created;
     private String message;

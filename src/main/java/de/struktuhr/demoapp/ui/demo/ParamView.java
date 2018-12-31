@@ -26,13 +26,13 @@ public class ParamView extends VerticalLayout implements HasUrlParameter<String>
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, @OptionalParameter String s) {
-        log.info("beforeEvent = {}, parameter = {}", beforeEvent,  s);
+        log.info("setParameter - beforeEvent = {}, parameter = {}", beforeEvent,  s);
         urlParameter = s;
     }
 
     @Override
     public void afterNavigation(AfterNavigationEvent afterNavigationEvent) {
-        log.info("afterNavigationEvent = {}", afterNavigationEvent);
+        log.info("afterNavigation - afterNavigationEvent = {}", afterNavigationEvent);
         if (urlParameter != null) {
             urlParameterLabel.setText(urlParameter);
         }

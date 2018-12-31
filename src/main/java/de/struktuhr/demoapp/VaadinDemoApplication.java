@@ -49,28 +49,7 @@ public class VaadinDemoApplication {
 					LocalDate.of(1974, Month.APRIL, 6), "Ms.", BigDecimal.valueOf(1_100.43),
 					"https://randomuser.me/api/portraits/women/69.jpg"));
 
-			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			for (Customer customer : repository.findAll()) {
-				log.info(customer.toString());
-			}
-			log.info("");
-
-			// fetch an individual customer by ID
-			Customer customer = repository.findById(1L).get();
-			log.info("Customer found with findOne(1L):");
-			log.info("--------------------------------");
-			log.info(customer.toString());
-			log.info("");
-
-			// fetch customers by last name
-			log.info("Customer found with findByLastNameStartsWithIgnoreCase('Bauer'):");
-			log.info("--------------------------------------------");
-			for (Customer bauer : repository.findByLastNameStartsWithIgnoreCase("Bauer")) {
-				log.info(bauer.toString());
-			}
-			log.info("");
+			log.info("Count Customers: {}", repository.count());
 		};
 	}
 }
